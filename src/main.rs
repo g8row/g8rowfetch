@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::fmt;
+use colored::Colorize;
 use systemstat::{saturating_sub_bytes, Platform, System};
 use wmi::Variant;
 use wmi::*;
@@ -75,14 +76,14 @@ fn main() {
     println!(
 "       ~@@@#:       {}
   7?^. ~@@@&: .~?!  --------------------
-.5@@@#5Y@@@&J5#@@@J CPU Temp : {:.2}
+.5@@@#5Y@@@&J5#@@@J CPU Temp : {:.2} °C 🔥
 .7P#@@@@@@@@@@@&B5! {}
    :?&@@@@@@@@#7.   
 .?P#@@@@@@@@@@@@#57 
 .Y@@@BYJ@@@&?5#@@@? 
   !7^. ~@@@&: .~?~  
        ~&@@#:       ",
-        get_name(com),
+        get_name(com).blue(),
         get_cpu_temp(com),
         memory
     );
